@@ -85,9 +85,4 @@ module.exports = {
             } else throw new UserInputError('Post not found');
         }
     }, 
-    Subscription: {
-        newPost: {
-            subscribe: (_, __, { pubsub }) => pubsub.asyncIterator('NEW_POST')
-        }
-    }
 };
