@@ -9,7 +9,7 @@ function PostCard({post: {body, createdAt, id, username, likeCount, commentCount
     console.log('Like')
   }
 
-  function comment(){
+  function commentOnPost(){
     console.log('comment')
   }
 
@@ -25,21 +25,19 @@ function PostCard({post: {body, createdAt, id, username, likeCount, commentCount
       </Card.Content>
       <Card.Content extra>
           <Button as='div' labelPosition='right' onClick={likePost}>
-            <Button icon>
+            <Button color="teal" icon>
             <Icon name='heart' />
-              Like
             </Button>
-            <Label as='a' basic pointing='left'>
+            <Label as='a' basic color="teal" pointing='left'>
             {likeCount}
             </Label>
           </Button>
 
-          <Button as='div' labelPosition='right' onClick={comment}>
-            <Button icon>
-            {/* <Icon name='heart' /> */}
-              Comments
+          <Button as='div' labelPosition='right' onClick={commentOnPost}>
+            <Button color="blue" icon>
+             <Icon name='comment' />
             </Button>
-            <Label as='a' basic pointing='left'>
+            <Label as='a' basic color="blue" pointing='left'>
             {commentCount}
             </Label>
           </Button>
