@@ -1,23 +1,37 @@
 // import React, { useState } from 'react';
 //import { Link } from 'react-router-dom';
-import { Menu,  } from 'semantic-ui-react';
+import { Menu  } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
-import React from 'react';
+import React, { useContext } from 'react';
 
-//found a much easier way to have the menubar be highlighted automatically
+import { AuthContext } from '../context/auth';
 
-const MenuBar = () => {
-    return (
+function MenuBar() {
+  const {user, logout} = useContext(AuthContext);
+
+  const menuBar = user ? (
+      <Menu pointing secondary size='massive' color='teal'>
+        <Menu.Item name={user.username} as={NavLink} to='/' exact />
+        
+        <Menu.Menu position='right'>
+          <Menu.Item name='logout' onClick={logout} />
+        </Menu.Menu>
+      </Menu>
+  ) : (
       <Menu pointing secondary size='massive' color='teal'>
         <Menu.Item name='home' as={NavLink} to='/' exact />
+        
         <Menu.Menu position='right'>
           <Menu.Item name='login' as={NavLink} to='/login' exact />
           <Menu.Item name='register' as={NavLink} to='/register' exact />
         </Menu.Menu>
       </Menu>
-    );
-  };
-  export default MenuBar;
+  );
+  
+  return menuBar;
+}
+
+export default MenuBar;
 
 
 // function MenuBar(){
